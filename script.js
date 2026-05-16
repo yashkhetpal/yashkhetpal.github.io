@@ -10,7 +10,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // 2. Tag all major content blocks for reveal animation
 const revealTargets = document.querySelectorAll(
-  '.about-card, .skill-card, .progress-block, .timeline-item, .project-card, .contact-card, .section-title, .section-lead'
+  '.about-card, .skill-card, .progress-block, .timeline-item, .project-card, .contact-card, .section-title, .section-lead, .leetcode-card-image, .leetcode-side'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
