@@ -685,6 +685,114 @@ footer {
   color: var(--text-soft);
 }
 
+/* ================== DSA / LEETCODE ================== */
+.leetcode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.leetcode-card-image {
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  transition: border-color 0.3s ease;
+}
+.leetcode-card-image:hover { border-color: var(--accent); }
+.leetcode-card-image a {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.leetcode-card-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+.leetcode-card-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+  margin: 0;
+}
+
+.leetcode-side {
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.leetcode-side:hover { border-color: var(--accent); }
+.leetcode-side::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #ffa116, var(--accent));
+}
+.leetcode-emoji {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+}
+.leetcode-side h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.leetcode-side > p {
+  color: var(--text-soft);
+  margin-bottom: 24px;
+}
+
+.leetcode-topics-block {
+  margin-bottom: 28px;
+  flex: 1;
+}
+.leetcode-topics-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+.leetcode-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.leetcode-topics span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 6px;
+}
+
+.leetcode-btn { align-self: flex-start; }
+
+@media (max-width: 800px) {
+  .leetcode-grid { grid-template-columns: 1fr; }
+}
+
 /* ================== REVEAL ANIMATION ================== */
 .reveal {
   opacity: 0;
