@@ -625,6 +625,10 @@ img { max-width: 100%; display: block; }
   color: var(--text-dim);
   cursor: default;
 }
+.project-links {
+  display: flex;
+  gap: 18px;
+}
 
 /* ================== CONTACT ================== */
 .contact-grid {
