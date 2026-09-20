@@ -40,30 +40,7 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
   }, 4000);
 }
 
-// 4. Animate progress bars only when the block is visible
-const bars = document.querySelectorAll('.bar-fill');
-const initialWidths = Array.from(bars).map((b) => b.style.width);
-bars.forEach((b) => (b.style.width = '0%'));
-
-const progressBlock = document.querySelector('.progress-block');
-if (progressBlock) {
-  const barObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          bars.forEach((b, i) => {
-            setTimeout(() => (b.style.width = initialWidths[i]), i * 120);
-          });
-          barObs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-  barObs.observe(progressBlock);
-}
-
-// 5. Smooth scroll for any in-page anchor (some older browsers need this)
+// 4. Smooth scroll for any in-page anchor (some older browsers need this)
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
     const target = document.querySelector(link.getAttribute('href'));
