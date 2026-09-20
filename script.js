@@ -40,7 +40,34 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
   }, 4000);
 }
 
-// 4. Smooth scroll for any in-page anchor (some older browsers need this)
+// 4. LeetCode stats card: the third-party card service is slow on cold
+//    cache and a hung <img> request never retries on its own. Retry once
+//    with a cache-buster; if it still fails, swap in hard-coded stats so
+//    the section is never an empty box.
+const leetImg = document.querySelector('.leetcode-card-image img');
+if (leetImg) {
+  const loaded = () => leetImg.complete && leetImg.naturalWidth > 0;
+
+  const showFallback = () => {
+    if (loaded()) return;
+    const wrap = leetImg.closest('a') || leetImg.parentElement;
+    wrap.innerHTML =
+      '<div style="border:1px solid var(--border-soft,#22304a);border-radius:16px;' +
+      'padding:32px 24px;text-align:center;">' +
+      '<div style="font-size:2.2rem;font-weight:700;color:var(--accent,#2ee6a8);">290+</div>' +
+      '<div style="color:inherit;opacity:0.75;margin:4px 0 14px;">problems solved on LeetCode</div>' +
+      '<span style="color:var(--accent,#2ee6a8);font-weight:600;">View my profile →</span></div>';
+  };
+
+  setTimeout(() => {
+    if (!loaded()) {
+      leetImg.src = leetImg.src.split('&retry=')[0] + '&retry=' + Date.now();
+      setTimeout(showFallback, 8000);
+    }
+  }, 6000);
+}
+
+// 5. Smooth scroll for any in-page anchor (some older browsers need this)
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
     const target = document.querySelector(link.getAttribute('href'));
